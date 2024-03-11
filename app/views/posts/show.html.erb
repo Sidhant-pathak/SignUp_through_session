@@ -1,0 +1,20 @@
+<h1>Posts</h1>
+<p><%= @post.content %></p>
+
+<h2>Comments</h2>
+<%= render @post.comments %>
+
+<%= form_with(model: [@post,@post.comments.build], url: post_comments_path(@post)) do |form| %>
+<div class="field">
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+</div>
+<%= form.submit "Add Comment" %>
+<% end %> 
+
+<% if current_user && current_user == @post.user %>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+  <%= link_to 'Delete', @post,data: { "turbo-method": :delete } %>
+<% end %>
+
+<%= link_to 'Back', posts_path %>

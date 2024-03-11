@@ -1,0 +1,7 @@
+<%= form_with(model: [parent_comment.post, parent_comment.replies.build], local: true) do |form| %>
+  <div class="field">
+    <%= form.text_area :content, placeholder: 'Add a reply...' %>
+    <%= form.hidden_field :parent_id, value: parent_comment.id %>
+  </div>
+  <%= form.submit 'Reply' %>
+<% end %>

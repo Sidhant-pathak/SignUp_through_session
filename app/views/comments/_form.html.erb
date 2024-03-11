@@ -1,0 +1,8 @@
+<%= form_with(model: @comment, url: comments_path(parent_id: @parent_comment), local: true) do |form| %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content %>
+  </div>
+  
+  <%= form.submit "Submit Reply" %>
+<% end %>

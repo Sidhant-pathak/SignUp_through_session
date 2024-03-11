@@ -1,0 +1,25 @@
+<div class="comment" >
+    <p><%= comment.content %></p>
+
+
+  <%# <%= link_to "Reply", new_comment_path(parent_id: comment.id), class: "reply-link" %> 
+
+
+<% @post.comments.each do |comment| %>
+  <%= comment.content %>
+
+
+    <% if comment.replies.any? %>
+    <div class="replies">
+        <% comment.replies.each do |reply| %>
+
+                <%# <%= render partial: 'comment', locals: { comment: reply } %> 
+
+        <div class="reply">
+            <%= reply.content %>
+        </div> 
+      <% end %>
+    </div>
+    <% end %>
+    <% end %>
+</div>
